@@ -229,7 +229,6 @@ color:#ffeaf3;
 }
 
 
-
 .letter{
 
 white-space:pre-wrap;
@@ -319,8 +318,6 @@ font-size:14px;
 width:100%;
 max-width:340px;
 height:152px;
-}
-
 }
 
 
@@ -584,38 +581,35 @@ btn.innerHTML = "🌙 Play our song 🎶";
 }
 
 
-setInterval(()=>{
+setInterval(() => {
 
+const star = document.createElement("div");
 
-let star=document.createElement("div");
+star.className = "heart";
 
+const icons = ["✨","⭐","🌙","💫","🤍"];
 
-star.className="heart";
+star.innerHTML = icons[Math.floor(Math.random() * icons.length)];
 
+// Random position
+star.style.left = Math.random() * 100 + "vw";
 
-star.innerHTML=
-["✨","⭐","🌙","💫"][Math.floor(Math.random()*4)];
+// Random size
+star.style.fontSize = (14 + Math.random() * 22) + "px";
 
+// Random duration
+star.style.animationDuration = (5 + Math.random() * 5) + "s";
 
-star.style.left=Math.random()*100+"vw";
-
-
-star.style.fontSize=
-(18+Math.random()*20)+"px";
-
+// Random delay
+star.style.animationDelay = Math.random() * 0.5 + "s";
 
 document.body.appendChild(star);
 
+setTimeout(() => {
+    star.remove();
+}, 10000);
 
-setTimeout(()=>{
-
-star.remove();
-
-},8000);
-
-
-
-},500);
+}, 250);
 
 
 </script>
