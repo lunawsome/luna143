@@ -6,8 +6,7 @@
 <title>For My Dearest, Cielo ❤️</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&family=Playfair+Display:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&family=Cormorant+Garamond:wght@500;600&display=swap');
 
 *{
     box-sizing:border-box;
@@ -17,14 +16,26 @@ body{
     margin:0;
     font-family:'Poppins',sans-serif;
     background:
-    radial-gradient(circle at top left,#ffd1e6,transparent 40%),
-    radial-gradient(circle at bottom right,#ffeaf4,transparent 40%),
-    linear-gradient(135deg,#fff5fa,#ffd9e9);
-    color:#6b4b57;
+    radial-gradient(circle at top,#3b3566 0%,#17152d 45%,#090816 100%);
+    color:#f8edf5;
     overflow-x:hidden;
 }
 
-/* Password Page */
+/* Stars background */
+body:before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background-image:
+    radial-gradient(#fff 1px,transparent 1px),
+    radial-gradient(#ffd6eb 1px,transparent 1px);
+    background-size:80px 80px,120px 120px;
+    opacity:.35;
+    pointer-events:none;
+}
+
+/* Password Screen */
 #passwordScreen{
     position:fixed;
     inset:0;
@@ -32,22 +43,34 @@ body{
     align-items:center;
     justify-content:center;
     background:
-    linear-gradient(135deg,rgba(255,214,232,.9),rgba(255,245,250,.95)),
-    url("https://i.imgur.com/8QfQZ7T.png");
-    background-size:cover;
+    linear-gradient(rgba(10,8,25,.7),rgba(10,8,25,.9)),
+    radial-gradient(circle,#51477c,#090816);
 }
 
 .card{
-    background:rgba(255,255,255,.85);
-    backdrop-filter:blur(12px);
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(15px);
     padding:40px 35px;
     border-radius:35px;
     max-width:380px;
     text-align:center;
-    box-shadow:
-    0 20px 50px rgba(255,105,150,.25),
-    inset 0 0 20px rgba(255,255,255,.8);
-    border:2px solid rgba(255,255,255,.7);
+    border:1px solid rgba(255,255,255,.25);
+    box-shadow:0 20px 50px rgba(0,0,0,.5);
+}
+
+.card h1{
+    font-family:'Great Vibes',cursive;
+    color:#ffd6eb;
+    text-shadow:0 0 20px #ffb6d9;
+}
+
+.card p{
+    color:#eee0ea;
+}
+
+input{
+    background:rgba(255,255,255,.9);
+    color:#555;
 }
 
 input,button{
@@ -55,22 +78,16 @@ input,button{
     padding:15px;
     margin-top:15px;
     border-radius:30px;
-    border:1px solid #ffd0e2;
+    border:none;
     font-size:16px;
-    outline:none;
-}
-
-input{
-    background:#fff8fb;
-    text-align:center;
 }
 
 button{
-    background:linear-gradient(45deg,#ff78a9,#ff4f8f);
+    background:linear-gradient(45deg,#ff8fbd,#d96bff);
     color:white;
-    border:none;
     cursor:pointer;
     font-weight:600;
+    box-shadow:0 0 20px rgba(255,143,189,.5);
     transition:.3s;
 }
 
@@ -78,93 +95,89 @@ button:hover{
     transform:scale(1.05);
 }
 
-/* Main Website */
+/* Website */
 #website{
     display:none;
-    padding:30px 15px;
+    padding:25px 15px;
 }
 
 .hero{
     max-width:850px;
     margin:40px auto;
-    background:rgba(255,255,255,.8);
-    backdrop-filter:blur(15px);
+    background:rgba(255,255,255,.1);
+    backdrop-filter:blur(18px);
     padding:45px;
     border-radius:40px;
-    box-shadow:0 15px 45px rgba(255,105,150,.18);
-    border:1px solid rgba(255,255,255,.8);
+    border:1px solid rgba(255,255,255,.2);
+    box-shadow:0 20px 60px rgba(0,0,0,.4);
 }
 
 h1{
     font-family:'Great Vibes',cursive;
     text-align:center;
-    color:#ff4f91;
-    font-size:65px;
-    text-shadow:0 5px 15px rgba(255,120,160,.25);
+    font-size:70px;
+    color:#ffd6eb;
+    text-shadow:
+    0 0 10px #ffb6d9,
+    0 0 25px #ffb6d9;
 }
 
 h2{
     text-align:center;
-    color:#d66a94;
-    font-family:'Playfair Display',serif;
-    letter-spacing:1px;
-}
-
-.letter{
-    white-space:pre-wrap;
-    line-height:2;
-    font-size:18px;
-    color:#634752;
-    padding:20px;
+    font-family:'Cormorant Garamond',serif;
+    color:#f7c6dd;
+    font-size:30px;
 }
 
 .timer{
     margin:35px 0;
     padding:25px;
     border-radius:25px;
-    background:
-    linear-gradient(135deg,#fff0f7,#ffe1ed);
     text-align:center;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.2);
+    color:#ffe6f2;
     font-size:22px;
-    color:#c65b88;
-    box-shadow:0 8px 25px rgba(255,105,150,.15);
 }
 
-/* Floating Hearts */
+.letter{
+    white-space:pre-wrap;
+    line-height:2;
+    font-size:18px;
+    color:#f8edf5;
+}
+
+/* Floating stars */
 .heart{
     position:fixed;
-    bottom:-30px;
-    animation:up 8s linear forwards;
-    filter:drop-shadow(0 0 8px pink);
+    bottom:-20px;
+    animation:float 8s linear forwards;
 }
 
-@keyframes up{
-    0%{
-        transform:translateY(0) scale(1);
+@keyframes float{
+    from{
+        transform:translateY(0) rotate(0deg);
         opacity:1;
     }
-    100%{
-        transform:translateY(-110vh) scale(1.5);
+    to{
+        transform:translateY(-110vh) rotate(360deg);
         opacity:0;
     }
 }
 
-/* Mobile */
 @media(max-width:600px){
     .hero{
         padding:25px;
-        border-radius:30px;
     }
 
     h1{
-        font-size:48px;
+        font-size:50px;
     }
 
     .letter{
         font-size:16px;
     }
 }
-</style>
 </style>
 </head>
 <body>
