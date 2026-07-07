@@ -287,16 +287,20 @@ box-shadow:0 10px 30px rgba(0,0,0,.35);
 
 @keyframes float{
 0%{
-transform:translateY(0) rotate(0deg);
+transform:translateY(-50px) rotate(0deg);
 opacity:0;
 }
 
-10%{
-opacity:1;
+15%{
+opacity:.8;
+}
+
+85%{
+opacity:.8;
 }
 
 100%{
-transform:translateY(120vh) rotate(360deg);
+transform:translate(-30px,110vh) rotate(360deg);
 opacity:0;
 }
 }
@@ -574,10 +578,10 @@ star.innerHTML = icons[Math.floor(Math.random() * icons.length)];
 star.style.left = Math.random() * window.innerWidth + "px";
 
 // Random size
-star.style.fontSize = (14 + Math.random() * 22) + "px";
-
+star.style.fontSize = (10 + Math.random() * 12) + "px";
+  
 // Random duration
-star.style.animationDuration = (5 + Math.random() * 5) + "s";
+star.style.animationDuration = (12 + Math.random() * 8) + "s";
 
 // Random delay
 star.style.animationDelay = Math.random() * 0.5 + "s";
@@ -588,7 +592,7 @@ setTimeout(() => {
     star.remove();
 }, 10000);
 
-}, 250);
+}, 1200);
 
 
 </script>
