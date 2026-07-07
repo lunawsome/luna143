@@ -2,203 +2,442 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>For My Dearest, Cielo ❤️</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For My Dearest, Cielo 🌙❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&family=Cormorant+Garamond:wght@500;600&display=swap" rel="stylesheet">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&family=Cormorant+Garamond:wght@500;600&display=swap');
 
 *{
-    box-sizing:border-box;
+box-sizing:border-box;
 }
 
 body{
-    margin:0;
-    font-family:'Poppins',sans-serif;
-    background:
-    radial-gradient(circle at top,#3b3566 0%,#17152d 45%,#090816 100%);
-    color:#f8edf5;
-    overflow-x:hidden;
+margin:0;
+font-family:'Poppins',sans-serif;
+background:
+radial-gradient(circle at top,#55477d,#18152d 45%,#080711);
+color:#fff0f7;
+overflow-x:hidden;
 }
 
-/* Stars background */
-body:before{
-    content:"";
-    position:fixed;
-    width:100%;
-    height:100%;
-    background-image:
-    radial-gradient(#fff 1px,transparent 1px),
-    radial-gradient(#ffd6eb 1px,transparent 1px);
-    background-size:80px 80px,120px 120px;
-    opacity:.35;
-    pointer-events:none;
+
+/* stars */
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background-image:
+radial-gradient(white 1px,transparent 1px),
+radial-gradient(#ffd6ea 1px,transparent 1px);
+background-size:70px 70px,120px 120px;
+opacity:.35;
+pointer-events:none;
 }
 
-/* Password Screen */
+
+/* moon */
+
+.moon{
+position:fixed;
+top:40px;
+right:50px;
+width:120px;
+height:120px;
+background:#fff7d6;
+border-radius:50%;
+box-shadow:
+0 0 40px #fff2b8,
+0 0 90px rgba(255,240,180,.6);
+}
+
+
+
+/* password */
+
 #passwordScreen{
-    position:fixed;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:
-    linear-gradient(rgba(10,8,25,.7),rgba(10,8,25,.9)),
-    radial-gradient(circle,#51477c,#090816);
+position:fixed;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+background:
+linear-gradient(
+rgba(8,7,20,.65),
+rgba(8,7,20,.9)
+);
+z-index:5;
 }
+
 
 .card{
-    background:rgba(255,255,255,.12);
-    backdrop-filter:blur(15px);
-    padding:40px 35px;
-    border-radius:35px;
-    max-width:380px;
-    text-align:center;
-    border:1px solid rgba(255,255,255,.25);
-    box-shadow:0 20px 50px rgba(0,0,0,.5);
+width:90%;
+max-width:380px;
+padding:40px 30px;
+text-align:center;
+
+background:rgba(255,255,255,.12);
+backdrop-filter:blur(15px);
+
+border-radius:35px;
+border:1px solid rgba(255,255,255,.25);
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.5);
 }
+
 
 .card h1{
-    font-family:'Great Vibes',cursive;
-    color:#ffd6eb;
-    text-shadow:0 0 20px #ffb6d9;
+font-family:'Great Vibes',cursive;
+font-size:55px;
+color:#ffd7eb;
+
+text-shadow:
+0 0 15px #ff9fc8;
 }
+
 
 .card p{
-    color:#eee0ea;
+color:#f8eaf2;
 }
+
+
+input,
+button{
+width:100%;
+padding:15px;
+margin-top:15px;
+border-radius:30px;
+font-size:16px;
+}
+
 
 input{
-    background:rgba(255,255,255,.9);
-    color:#555;
+border:none;
+text-align:center;
 }
 
-input,button{
-    width:100%;
-    padding:15px;
-    margin-top:15px;
-    border-radius:30px;
-    border:none;
-    font-size:16px;
-}
 
 button{
-    background:linear-gradient(45deg,#ff8fbd,#d96bff);
-    color:white;
-    cursor:pointer;
-    font-weight:600;
-    box-shadow:0 0 20px rgba(255,143,189,.5);
-    transition:.3s;
+border:none;
+background:
+linear-gradient(45deg,#ff7eb5,#c77dff);
+color:white;
+font-weight:600;
+cursor:pointer;
+
+box-shadow:
+0 0 20px rgba(255,120,180,.5);
+
+transition:.3s;
 }
+
 
 button:hover{
-    transform:scale(1.05);
+transform:scale(1.05);
 }
 
-/* Website */
+
+
+/* website */
+
 #website{
-    display:none;
-    padding:25px 15px;
+display:none;
+padding:25px 15px;
 }
+
 
 .hero{
-    max-width:850px;
-    margin:40px auto;
-    background:rgba(255,255,255,.1);
-    backdrop-filter:blur(18px);
-    padding:45px;
-    border-radius:40px;
-    border:1px solid rgba(255,255,255,.2);
-    box-shadow:0 20px 60px rgba(0,0,0,.4);
+max-width:850px;
+margin:40px auto;
+padding:45px;
+
+background:
+rgba(255,255,255,.12);
+
+backdrop-filter:blur(18px);
+
+border-radius:40px;
+
+border:
+1px solid rgba(255,255,255,.2);
+
+box-shadow:
+0 20px 60px rgba(0,0,0,.5);
 }
+
+
 
 h1{
-    font-family:'Great Vibes',cursive;
-    text-align:center;
-    font-size:70px;
-    color:#ffd6eb;
-    text-shadow:
-    0 0 10px #ffb6d9,
-    0 0 25px #ffb6d9;
+
+font-family:'Great Vibes',cursive;
+
+text-align:center;
+
+font-size:75px;
+
+color:#ffd7eb;
+
+text-shadow:
+0 0 15px #ffb6d9,
+0 0 30px #ffb6d9;
+
 }
+
+
 
 h2{
-    text-align:center;
-    font-family:'Cormorant Garamond',serif;
-    color:#f7c6dd;
-    font-size:30px;
+
+text-align:center;
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:35px;
+
+color:#ffd1e5;
+
 }
+
+
 
 .timer{
-    margin:35px 0;
-    padding:25px;
-    border-radius:25px;
-    text-align:center;
-    background:rgba(255,255,255,.12);
-    border:1px solid rgba(255,255,255,.2);
-    color:#ffe6f2;
-    font-size:22px;
+
+margin:35px 0;
+
+padding:25px;
+
+border-radius:25px;
+
+text-align:center;
+
+font-size:22px;
+
+
+background:
+rgba(255,255,255,.12);
+
+
+border:
+1px solid rgba(255,255,255,.2);
+
+
+color:#ffeaf3;
+
 }
+
+
 
 .letter{
-    white-space:pre-wrap;
-    line-height:2;
-    font-size:18px;
-    color:#f8edf5;
+
+white-space:pre-wrap;
+
+line-height:2;
+
+font-size:18px;
+
+color:#fff1f7;
+
 }
 
-/* Floating stars */
-.heart{
-    position:fixed;
-    bottom:-20px;
-    animation:float 8s linear forwards;
+
+
+/* music */
+
+.music-box{
+
+position:fixed;
+
+bottom:25px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+z-index:10;
+
 }
+
+
+.music-box button{
+
+width:auto;
+
+padding:12px 25px;
+
+background:
+rgba(255,255,255,.15);
+
+backdrop-filter:blur(10px);
+
+border:
+1px solid rgba(255,255,255,.3);
+
+}
+
+
+
+/* floating stars */
+
+.heart{
+
+position:fixed;
+
+bottom:-30px;
+
+animation:float 8s linear forwards;
+
+}
+
 
 @keyframes float{
-    from{
-        transform:translateY(0) rotate(0deg);
-        opacity:1;
-    }
-    to{
-        transform:translateY(-110vh) rotate(360deg);
-        opacity:0;
-    }
+
+from{
+
+transform:
+translateY(0)
+rotate(0deg);
+
+opacity:1;
+
 }
+
+to{
+
+transform:
+translateY(-110vh)
+rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+
 
 @media(max-width:600px){
-    .hero{
-        padding:25px;
-    }
 
-    h1{
-        font-size:50px;
-    }
+.moon{
 
-    .letter{
-        font-size:16px;
-    }
+width:80px;
+height:80px;
+
+top:25px;
+right:25px;
+
 }
+
+
+.hero{
+
+padding:25px;
+
+}
+
+
+h1{
+
+font-size:50px;
+
+}
+
+
+.letter{
+
+font-size:16px;
+
+}
+
+}
+
 </style>
+
 </head>
+
+
 <body>
+
+
+<div class="moon"></div>
+
+
 <div id="passwordScreen">
+
 <div class="card">
-<h1 style="font-size:42px">For My Dearest,<br>Cielo ❤️</h1>
-<p>Only one person can unlock this little piece of my heart.</p>
-<input id="password" type="password" placeholder="Enter our password">
-<button onclick="unlock()">Unlock My Heart 💖</button>
-<div id="error" style="color:#c2185b;margin-top:10px"></div>
+
+<h1>
+For My Dearest,
+<br>
+Cielo ❤️
+</h1>
+
+<p>
+Only one person can unlock this little piece of my heart 🌙
+</p>
+
+
+<input 
+id="password"
+type="password"
+placeholder="Enter our password">
+
+
+<button onclick="unlock()">
+Unlock My Heart 💖
+</button>
+
+
+<div id="error"></div>
+
+
 </div>
+
 </div>
+
+
 
 <div id="website">
-<div class="hero">
-<h1>For My Dearest,<br>Cielo ❤️</h1>
-<h2>Happy Monthsary, Hon 🤍</h2>
-<div class="timer" id="timer"></div>
-<div class="letter">
-If you are reading this, that means you unlocked the most special place I have ever made.
 
+
+<div class="music-box">
+
+<button onclick="playMusic()" id="musicBtn">
+🌙 Play our song 🎶
+</button>
+
+<audio id="song">
+<source src="YOUR_AUDIO_FILE.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+
+
+<div class="hero">
+
+
+<h1>
+For My Dearest,
+<br>
+Cielo ❤️
+</h1>
+
+
+<h2>
+Happy Monthsary, Hon 🤍
+</h2>
+
+
+<div class="timer" id="timer"></div>
+
+
+<div class="letter">
+
+
+<!-- YOUR LETTER GOES HERE -->
 Happy 1st Monthsary, hon. I know it is hard for both of us to think on how we can celebrate this day. It is really hard to think of something hehe. But I did my best to look for best thing I can give you. I even watched tutorials  sa youtube of how to make website like this😆 So if I I made a mistake, pleaseeeee bear with me hahahaha.
 
 I hope you know how much I love you. I am willing to take the risk if it means having you in my life. I'll do my best to keep you kasi ikaw na yan e. Ikaw yung gusto kong makasama sa future. Ikaw yung gusto kong kasama araw-araw. Kaaway, kalambingan, or kung ano man, ikaw yung gusto kong kasama. Alam mo ba, I always pray na sana, life will be kind to me by letting me keep you. I know both of us have been through so much. Feeling ko kasi ikaw yung reward after those heartaches. Kaya, I always thank God at yung parents mo for creating such a wonderful person like you. Sobrang thankful ako kasi you exist🥹
@@ -214,33 +453,137 @@ Let's promise each other, okay? Na we will always choose each other no matter wh
 Happy monthsary, hon! I love you so much!!!😚❤️
 
 -Luna🌙
-</div>
-</div>
+
+
 </div>
 
+</div>
+
+</div>
+
+
+
 <script>
+
 function unlock(){
- const p=document.getElementById('password').value.trim();
- if(p==='0611'){
-   document.getElementById('passwordScreen').style.display='none';
-   document.getElementById('website').style.display='block';
- }else document.getElementById('error').textContent='Wrong password 🥺';
+
+let password=document.getElementById("password").value.trim();
+
+
+if(password==="0611"){
+
+document.getElementById("passwordScreen").style.display="none";
+
+document.getElementById("website").style.display="block";
+
 }
+
+else{
+
+document.getElementById("error").innerHTML=
+"Wrong password 🥺";
+
+}
+
+}
+
+
+
 const start=new Date("2026-06-11T00:00:00");
+
 function tick(){
- let diff=new Date()-start;
- let d=Math.floor(diff/86400000),h=Math.floor(diff/3600000)%24,m=Math.floor(diff/60000)%60,s=Math.floor(diff/1000)%60;
- document.getElementById('timer').innerHTML="⏳ We've been together for<br><b>"+d+" days "+h+" hours "+m+" minutes "+s+" seconds</b>";
+
+let diff=new Date()-start;
+
+let days=Math.floor(diff/86400000);
+
+let hours=Math.floor(diff/3600000)%24;
+
+let minutes=Math.floor(diff/60000)%60;
+
+let seconds=Math.floor(diff/1000)%60;
+
+
+document.getElementById("timer").innerHTML=
+
+"🌙 We've been together for<br><b>"+
+days+" days "+
+hours+" hours "+
+minutes+" minutes "+
+seconds+" seconds</b>";
+
 }
-setInterval(tick,1000);tick();
+
+
+setInterval(tick,1000);
+
+tick();
+
+
+
+function playMusic(){
+
+let song=document.getElementById("song");
+
+let btn=document.getElementById("musicBtn");
+
+
+if(song.paused){
+
+song.play();
+
+btn.innerHTML="🎶 Playing our song 🤍";
+
+}
+
+else{
+
+song.pause();
+
+btn.innerHTML="🌙 Play our song 🎶";
+
+}
+
+}
+
+
+
 setInterval(()=>{
- let h=document.createElement('div');
- h.className='heart';
- h.textContent=['💗','💕','💖','🤍'][Math.floor(Math.random()*4)];
- h.style.left=Math.random()*100+'vw';
- h.style.fontSize=(18+Math.random()*18)+'px';
- document.body.appendChild(h);
- setTimeout(()=>h.remove(),8000);
+
+
+let star=document.createElement("div");
+
+
+star.className="heart";
+
+
+star.innerHTML=
+["✨","⭐","🌙","💫"][Math.floor(Math.random()*4)];
+
+
+star.style.left=Math.random()*100+"vw";
+
+
+star.style.fontSize=
+(18+Math.random()*20)+"px";
+
+
+document.body.appendChild(star);
+
+
+setTimeout(()=>{
+
+star.remove();
+
+},8000);
+
+
+
 },500);
+
+
 </script>
-</body></html>
+
+
+</body>
+</html>
