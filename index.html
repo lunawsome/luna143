@@ -247,7 +247,6 @@ color:#fff1f7;
 /* music */
 
 .music-box{
-.music-box{
 position:fixed;
 bottom:25px;
 left:50%;
@@ -258,32 +257,37 @@ text-align:center;
 
 .music-box button{
 width:auto;
-padding:12px 25px;
+padding:12px 24px;
+border:none;
 border-radius:30px;
 background:linear-gradient(45deg,#ff7eb5,#c77dff);
 color:white;
-border:none;
 font-weight:600;
+cursor:pointer;
 box-shadow:0 0 20px rgba(255,120,180,.5);
+transition:.3s;
 }
 
-#playerContainer{
+.music-box button:hover{
+transform:scale(1.05);
+}
+
+#spotifyPlayer{
 display:none;
 margin-top:15px;
-background:rgba(255,255,255,.15);
-backdrop-filter:blur(10px);
-padding:10px;
-border-radius:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.3);
+animation:fadeIn .5s ease;
 }
 
-#music{
-width:280px;
-height:160px;
-border-radius:15px;
-border:none;
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(10px);
 }
-
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
 
 
 /* floating stars */
@@ -409,19 +413,37 @@ Unlock My Heart 💖
 <div id="website">
 
 
-<div class="music-box" id="musicBox">
+<div class="music-box">
 
-<button onclick="playMusic()" id="musicBtn">
+<button onclick="showSpotify()" id="musicBtn">
 🌙 Play our song 🎶
 </button>
 
-<div id="playerContainer">
-<iframe 
-id="music"
-src=""
-allow="autoplay">
+<div id="spotifyPlayer" style="display:none; margin-top:15px;">
+
+<iframe
+style="border-radius:12px"
+src="https://open.spotify.com/embed/track/1hJtJvPX9knMysNDQw0HDJ?utm_source=generator"
+width="300"
+height="152"
+frameborder="0"
+allowfullscreen=""
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+loading="lazy">
 </iframe>
+
 </div>
+
+<div class="hero">
+
+<iframe 
+style="border-radius:12px"
+src="https://open.spotify.com/embed/track/1hJtJvPX9knMysNDQw0HDJ"
+width="300"
+height="80"
+frameborder="0"
+allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+</iframe>
 
 </div>
 
@@ -534,17 +556,11 @@ tick();
 
 
 
-function playMusic(){
+function showSpotify(){
 
-let music=document.getElementById("music");
-let player=document.getElementById("playerContainer");
-let btn=document.getElementById("musicBtn");
+document.getElementById("spotifyPlayer").style.display="block";
 
-player.style.display="block";
-
-music.src="https://www.youtube.com/embed/C1nPZNn7FJ4?autoplay=1";
-
-btn.innerHTML="🎶 Our song is playing 🤍";
+document.getElementById("musicBtn").innerHTML="🤍 Press Play Below 🎶";
 
 }
 
