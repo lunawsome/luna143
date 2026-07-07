@@ -257,25 +257,66 @@ text-align:center;
 
 .music-box button{
 width:auto;
-padding:12px 24px;
+padding:14px 28px;
 border:none;
 border-radius:30px;
 background:linear-gradient(45deg,#ff7eb5,#c77dff);
 color:white;
 font-weight:600;
+font-size:16px;
 cursor:pointer;
 box-shadow:0 0 20px rgba(255,120,180,.5);
 transition:.3s;
 }
 
 .music-box button:hover{
-transform:scale(1.05);
+transform:translateY(-2px) scale(1.05);
+box-shadow:0 0 30px rgba(255,120,180,.7);
 }
 
 #spotifyPlayer{
 display:none;
 margin-top:15px;
 animation:fadeIn .5s ease;
+}
+
+#spotifyPlayer iframe{
+width:300px;
+height:152px;
+border:none;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+@keyframes fadeIn{
+from{
+opacity:0;
+transform:translateY(15px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+@media(max-width:600px){
+
+.music-box{
+bottom:20px;
+width:100%;
+padding:0 15px;
+}
+
+.music-box button{
+width:100%;
+}
+
+#spotifyPlayer iframe{
+width:100%;
+max-width:340px;
+height:152px;
+}
+
 }
 
 @keyframes fadeIn{
@@ -412,14 +453,13 @@ Unlock My Heart 💖
 
 <div id="website">
 
-
 <div class="music-box">
 
 <button onclick="showSpotify()" id="musicBtn">
 🌙 Play our song 🎶
 </button>
 
-<div id="spotifyPlayer" style="display:none; margin-top:15px;">
+<div id="spotifyPlayer">
 
 <iframe
 style="border-radius:12px"
@@ -434,20 +474,7 @@ loading="lazy">
 
 </div>
 
-<div class="hero">
-
-<iframe 
-style="border-radius:12px"
-src="https://open.spotify.com/embed/track/1hJtJvPX9knMysNDQw0HDJ"
-width="300"
-height="80"
-frameborder="0"
-allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-</iframe>
-
 </div>
-
-
 
 <div class="hero">
 
@@ -558,12 +585,28 @@ tick();
 
 function showSpotify(){
 
-document.getElementById("spotifyPlayer").style.display="block";
+const player = document.getElementById("spotifyPlayer");
+const button = document.getElementById("musicBtn");
 
-document.getElementById("musicBtn").innerHTML="🤍 Press Play Below 🎶";
+if(player.style.display === "block"){
+
+player.style.display = "none";
+button.innerHTML = "🌙 Play our song 🎶";
+
+}else{
+
+player.style.display = "block";
+button.innerHTML = "🤍Playing our song 🎶";
+
+// Smoothly scroll to the player
+player.scrollIntoView({
+behavior: "smooth",
+block: "center"
+});
 
 }
 
+}
 
 
 setInterval(()=>{
