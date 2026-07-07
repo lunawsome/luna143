@@ -286,9 +286,8 @@ box-shadow:0 10px 30px rgba(0,0,0,.35);
 }
 
 @keyframes float{
-
 0%{
-transform:translateY(-120vh) rotate(0deg);
+transform:translateY(0) rotate(0deg);
 opacity:0;
 }
 
@@ -296,16 +295,12 @@ opacity:0;
 opacity:1;
 }
 
-90%{
-opacity:1;
-}
-
 100%{
 transform:translateY(120vh) rotate(360deg);
 opacity:0;
 }
-
 }
+  
 @media(max-width:600px){
 
 .music-box{
@@ -335,33 +330,13 @@ height:152px;
 
 .heart{
 position:fixed;
-top:-40px;
+top:-50px;
 pointer-events:none;
-z-index:1;
-animation:float linear forwards;
+z-index:50;
+animation-name:float;
+animation-timing-function:linear;
+animation-fill-mode:forwards;
 }
-
-
-@keyframes float{
-0%{
-transform:translateY(0) rotate(0deg);
-opacity:0;
-}
-
-10%{
-opacity:1;
-}
-
-90%{
-opacity:1;
-}
-
-100%{
-transform:translateY(-120vh) rotate(360deg);
-opacity:0;
-}
-}
-
 
 
 @media(max-width:600px){
