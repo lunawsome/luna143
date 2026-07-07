@@ -247,28 +247,29 @@ color:#fff1f7;
 /* music */
 
 .music-box{
-text-align:center;
-margin-bottom:30px;
+position:fixed;
+bottom:25px;
+right:25px;
+z-index:999;
 }
 
 .music-box button{
 width:auto;
-padding:14px 28px;
+padding:14px 24px;
 border:none;
-border-radius:30px;
+border-radius:50px;
 background:linear-gradient(45deg,#ff7eb5,#c77dff);
 color:white;
 font-weight:600;
-font-size:16px;
 cursor:pointer;
-box-shadow:0 0 20px rgba(255,120,180,.5);
+box-shadow:0 8px 25px rgba(255,120,180,.5);
 transition:.3s;
 }
 
 .music-box button:hover{
-transform:translateY(-2px) scale(1.05);
-box-shadow:0 0 30px rgba(255,120,180,.7);
+transform:scale(1.05);
 }
+  
 
 #spotifyPlayer{
 display:none;
@@ -440,27 +441,16 @@ Unlock My Heart 💖
 
 <div class="music-box">
 
-<button onclick="showSpotify()" id="musicBtn">
+<button onclick="toggleMusic()" id="musicBtn">
 🌙 Play our song 🎶
 </button>
 
-<div id="spotifyPlayer">
-
-<iframe
-style="border-radius:12px"
-src="https://open.spotify.com/embed/track/1hJtJvPX9knMysNDQw0HDJ?utm_source=generator"
-width="300"
-height="152"
-frameborder="0"
-allowfullscreen=""
-allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-loading="lazy">
-</iframe>
+<audio id="song" loop>
+    <source src="Bawat Daan.mp3" type="audio/mpeg">
+</audio>
 
 </div>
-
-</div>
-
+  
 <div class="hero">
 
 
@@ -568,26 +558,20 @@ tick();
 
 
 
-function showSpotify(){
+function toggleMusic(){
 
-const player = document.getElementById("spotifyPlayer");
-const button = document.getElementById("musicBtn");
+const song = document.getElementById("song");
+const btn = document.getElementById("musicBtn");
 
-if(player.style.display === "block"){
+if(song.paused){
 
-player.style.display = "none";
-button.innerHTML = "🌙 Play our song 🎶";
+song.play();
+btn.innerHTML = "⏸ Pause our song";
 
 }else{
 
-player.style.display = "block";
-button.innerHTML = "🤍Playing our song 🎶";
-
-// Smoothly scroll to the player
-player.scrollIntoView({
-behavior: "smooth",
-block: "center"
-});
+song.pause();
+btn.innerHTML = "🌙 Play our song 🎶";
 
 }
 
