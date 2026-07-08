@@ -632,6 +632,35 @@ opacity:0;
 transform:translateY(-180px) scale(2) rotate(360deg);
 }
 }
+
+#continueSection{
+margin-top:70px;
+text-align:center;
+}
+
+#photoSurprise{
+display:none;
+opacity:0;
+transition:1s;
+margin-top:60px;
+text-align:center;
+}
+
+.darkMagic{
+animation:darkMagic 2s forwards;
+}
+
+@keyframes darkMagic{
+
+from{
+filter:brightness(1);
+}
+
+to{
+filter:brightness(.45);
+}
+
+}
   
 </style>
 
@@ -732,13 +761,112 @@ Happy monthsary, hon! I love you so much!!!😚❤️
 
 </div> <!-- closes .hero -->
 
-<div id="surprise" style="text-align:center;">
+<div id="continueSection">
+
+<h2>Still with me? 🤍</h2>
+
+<p>
+If you've made it this far...
+
+I have one more little surprise waiting for you.
+</p>
+
+<button onclick="startMagicJourney()">
+🌙 Continue
+</button>
+
+</div>
+
+<div id="photoSurprise" style="display:none;">
+
+<h2>🤍 Until this becomes real...</h2>
+
+<p class="photoText">
+
+We may not have a real picture together yet.
+
+So for now...
+
+I asked a little bit of AI to help me imagine us.
+
+Not because I want edited memories...
+
+But because I can't wait for the real ones.
+
+One day, we'll replace every edited picture with real memories.
+
+<br><br>
+
+✨ Close your eyes.
+
+Make one little wish.
+
+Then tap below.
+
+</p>
+
+<div id="photoFrame" onclick="showPhoto()">
+
+🌙
+
+<h3>Begin the Magic</h3>
+
+<p>Tap here.</p>
+
+</div>
+
+<div id="photoReveal">
+
+<img id="magicPhoto" src="Cielobaby.jpeg">
+
+<br><br>
+
+<button id="nextBtn" onclick="nextPhoto()" style="display:none;">
+🤍 One more...
+</button>
+
+</div>
+
+</div>
+
+<div id="surprise" style="display:none;text-align:center;">
 
 <div id="envelope" onclick="openLetter()">
+
 💌
-<p style="font-size:18px;margin-top:10px;">
-Click to open your last surprise 🤍
+
+<p>
+Your final surprise awaits...
 </p>
+
+</div>
+
+<div id="letterReveal">
+
+<h2>✨ One last thing...</h2>
+
+<p>
+
+No matter how many months,
+
+years,
+
+or lifetimes pass...
+
+<br><br>
+
+I'd still choose you.
+
+<br><br>
+
+Every single time.
+
+❤️
+
+</p>
+
+</div>
+
 </div>
 
 <div id="letterReveal" style="display:none;">
@@ -759,40 +887,6 @@ Every single time.
 
 </div>
 
-<div id="photoSurprise">
-
-<h2>🤍 Until this becomes real...</h2>
-
-<p class="photoText">
-We may not have a real photo together yet,
-but that doesn't make what we have any less real.
-<br><br>
-So, for now...
-let this little picture keep our place
-until the day we can finally take thousands together.
-<br><br>
-
-<b>Close your eyes.</b>
-<br>
-Make one little wish...
-<br><br>
-
-✨ Then tap below. ✨
-</p>
-
-<div id="photoFrame" onclick="showPhoto()">
-
-🌙
-
-<h3>A Little Bit of Magic</h3>
-
-<p>
-Tap me and
-<br>
-let the stars do the rest.
-</p>
-
-</div>
 
 <div id="photoReveal">
 <img src="Cielobaby.jpeg" alt="Our Picture">
@@ -1055,7 +1149,117 @@ star.remove();
 
 });
 
+let photoNumber=1;
+
+function startMagicJourney(){
+
+document.getElementById("continueSection").style.display="none";
+
+document.body.classList.add("darkMagic");
+
+const icons=["✨","🌙","💖","🤍","💫"];
+
+for(let i=0;i<80;i++){
+
+setTimeout(()=>{
+
+const magic=document.createElement("div");
+
+magic.className="magic";
+
+magic.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+
+magic.style.left=Math.random()*window.innerWidth+"px";
+
+magic.style.top=Math.random()*window.innerHeight+"px";
+
+document.body.appendChild(magic);
+
+setTimeout(()=>{
+
+magic.remove();
+
+},2000);
+
+},i*40);
+
+}
+
+setTimeout(()=>{
+
+const section=document.getElementById("photoSurprise");
+
+section.style.display="block";
+
+setTimeout(()=>{
+
+section.style.opacity="1";
+
+},50);
+
+section.scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+},2500);
+
+}
+
 function showPhoto(){
+
+document.getElementById("photoFrame").style.display="none";
+
+const reveal=document.getElementById("photoReveal");
+
+reveal.style.display="block";
+
+setTimeout(()=>{
+
+reveal.classList.add("show");
+
+document.getElementById("nextBtn").style.display="inline-block";
+
+},50);
+
+}
+
+function nextPhoto(){
+
+const photo=document.getElementById("magicPhoto");
+
+if(photoNumber==1){
+
+photo.style.opacity="0";
+
+setTimeout(()=>{
+
+photo.src="Cielo.jpeg";
+
+photo.style.opacity="1";
+
+document.getElementById("nextBtn").innerHTML="💌 Continue";
+
+photoNumber=2;
+
+},600);
+
+}else{
+
+document.getElementById("photoSurprise").style.display="none";
+
+document.getElementById("surprise").style.display="block";
+
+document.getElementById("surprise").scrollIntoView({
+
+behavior:"smooth"
+
+});
+
+}
+
+}
 
 const frame=document.getElementById("photoFrame");
 const reveal=document.getElementById("photoReveal");
