@@ -840,61 +840,6 @@ Your final surprise awaits...
 </p>
 
 </div>
-
-<div id="letterReveal">
-
-<h2>✨ One last thing...</h2>
-
-<p>
-
-No matter how many months,
-
-years,
-
-or lifetimes pass...
-
-<br><br>
-
-I'd still choose you.
-
-<br><br>
-
-Every single time.
-
-❤️
-
-</p>
-
-</div>
-
-</div>
-
-<div id="letterReveal" style="display:none;">
-
-<h2>✨ One last thing...</h2>
-
-<p>
-No matter how many months, years, or lifetimes pass...
-<br><br>
-I'd still choose you.
-<br><br>
-Every single time.
-<br><br>
-❤️
-</p>
-
-</div>
-
-</div>
-
-
-<div id="photoReveal">
-<img src="Cielobaby.jpeg" alt="Our Picture">
-</div>
-
-</div>
-
-</div> <!-- closes #website -->
   
 
 <script>
@@ -1209,9 +1154,39 @@ behavior:"smooth"
 
 function showPhoto(){
 
-document.getElementById("photoFrame").style.display="none";
-
+const frame=document.getElementById("photoFrame");
 const reveal=document.getElementById("photoReveal");
+
+frame.style.pointerEvents="none";
+
+const icons=["✨","🌙","💖","🤍","🌸","💫"];
+
+for(let i=0;i<40;i++){
+
+setTimeout(()=>{
+
+const magic=document.createElement("div");
+
+magic.className="magic";
+
+magic.innerHTML=icons[Math.floor(Math.random()*icons.length)];
+
+magic.style.left=(window.innerWidth/2-90+Math.random()*180)+"px";
+magic.style.top=(window.innerHeight/2-120+Math.random()*180)+"px";
+
+document.body.appendChild(magic);
+
+setTimeout(()=>{
+magic.remove();
+},2000);
+
+},i*45);
+
+}
+
+setTimeout(()=>{
+
+frame.style.display="none";
 
 reveal.style.display="block";
 
@@ -1222,6 +1197,8 @@ reveal.classList.add("show");
 document.getElementById("nextBtn").style.display="inline-block";
 
 },50);
+
+},1800);
 
 }
 
@@ -1261,51 +1238,6 @@ behavior:"smooth"
 
 }
 
-const frame=document.getElementById("photoFrame");
-const reveal=document.getElementById("photoReveal");
-
-frame.style.pointerEvents="none";
-frame.style.transform="scale(1.15)";
-frame.style.boxShadow="0 0 60px #ffd6ea";
-
-const icons=["✨","🌙","💖","🤍","🌸","💫"];
-
-for(let i=0;i<40;i++){
-
-setTimeout(()=>{
-
-const magic=document.createElement("div");
-
-magic.className="magic";
-
-magic.innerHTML=icons[Math.floor(Math.random()*icons.length)];
-
-magic.style.left=(window.innerWidth/2-90+Math.random()*180)+"px";
-magic.style.top=(window.innerHeight/2-120+Math.random()*180)+"px";
-
-document.body.appendChild(magic);
-
-setTimeout(()=>{
-magic.remove();
-},2000);
-
-},i*45);
-
-}
-
-setTimeout(()=>{
-
-frame.style.display="none";
-
-reveal.style.display="block";
-
-setTimeout(()=>{
-reveal.classList.add("show");
-},50);
-
-},1800);
-
-}
 
 const keypad = document.getElementById("keypad");
 
