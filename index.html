@@ -77,16 +77,17 @@ z-index:5;
 width:90%;
 max-width:380px;
 padding:40px 30px;
+min-height:620px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:flex-start;
 text-align:center;
-
 background:rgba(255,255,255,.12);
 backdrop-filter:blur(15px);
-
 border-radius:35px;
 border:1px solid rgba(255,255,255,.25);
-
-box-shadow:
-0 20px 60px rgba(0,0,0,.5);
+box-shadow:0 20px 60px rgba(0,0,0,.5);
 }
 
 
@@ -406,17 +407,16 @@ box-shadow:0 0 10px rgba(255,182,217,.4);
 
 #keypad{
 display:grid;
-grid-template-columns:repeat(3,80px);
-gap:12px;
+grid-template-columns:repeat(3,65px);
+gap:10px;
 justify-content:center;
-margin-top:20px;
+margin:20px 0;
 }
-
+  
 #keypad button{
-width:75px;
-height:75px;
-border-radius:50%;
-font-size:28px;
+width:65px;
+height:65px;
+font-size:24px;
 font-weight:bold;
 margin:auto;
 background:rgba(255,255,255,.12);
@@ -544,7 +544,7 @@ font-size:18px;
 
 <div id="keypad"></div>
 
-<div id="error"></div>
+<div id="error" style="margin-top:20px;"></div>
 
 </div>
 
