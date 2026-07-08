@@ -508,6 +508,27 @@ min-height:45px;
 margin-top:12px;
 font-size:18px;
 }
+
+#errorPopup{
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:rgba(30,20,50,.95);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,.25);
+border-radius:20px;
+padding:25px 30px;
+max-width:320px;
+width:85%;
+text-align:center;
+font-size:18px;
+color:#fff;
+z-index:9999;
+box-shadow:0 15px 40px rgba(0,0,0,.5);
+animation:fadeOpen .3s ease;
+}
   
 </style>
 
@@ -522,6 +543,8 @@ font-size:18px;
 
 <div id="passwordScreen">
 
+<div id="errorPopup"></div> 
+  
 <div class="card" id="firstQuestion">
 
 <h1>Are you Cielo? 🤍</h1>
@@ -543,8 +566,6 @@ font-size:18px;
 <input id="password" type="hidden">
 
 <div id="keypad"></div>
-
-<div id="error" style="margin-top:20px;"></div>
 
 </div>
 
@@ -730,7 +751,14 @@ document.getElementById("musicBtn").classList.add("playing");
             message = "💖 Fineee, hon. Here's a tiny hint...<br><br><b>06 _ _</b>";
         }
 
-        document.getElementById("error").innerHTML = message;
+        const popup = document.getElementById("errorPopup");
+
+popup.innerHTML = message;
+popup.style.display = "block";
+
+setTimeout(() => {
+    popup.style.display = "none";
+}, 2200);
         document.getElementById("password").value = "";
         document.getElementById("display").innerHTML = "○ ○ ○ ○";
     }
