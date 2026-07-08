@@ -514,7 +514,7 @@ display:none;
 position:fixed;
 top:50%;
 left:50%;
-transform:translate(-50%,-50%);
+transform:translate(-50%,-50%) scale(.9);
 background:rgba(30,20,50,.95);
 backdrop-filter:blur(15px);
 border:1px solid rgba(255,255,255,.25);
@@ -527,7 +527,18 @@ font-size:18px;
 color:#fff;
 z-index:9999;
 box-shadow:0 15px 40px rgba(0,0,0,.5);
-animation:fadeOpen .3s ease;
+animation:popupShow .25s ease forwards;
+}
+
+@keyframes popupShow{
+from{
+opacity:0;
+transform:translate(-50%,-50%) scale(.85);
+}
+to{
+opacity:1;
+transform:translate(-50%,-50%) scale(1);
+}
 }
   
 </style>
