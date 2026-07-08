@@ -540,6 +540,57 @@ opacity:1;
 transform:translate(-50%,-50%) scale(1);
 }
 }
+
+#photoSurprise{
+margin-top:70px;
+text-align:center;
+padding:30px;
+}
+
+.photoText{
+max-width:650px;
+margin:auto;
+line-height:1.8;
+font-size:18px;
+}
+
+#photoFrame{
+margin:35px auto;
+width:180px;
+height:220px;
+border:3px dashed rgba(255,255,255,.35);
+border-radius:20px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+background:rgba(255,255,255,.08);
+transition:.3s;
+}
+
+#photoFrame:hover{
+transform:scale(1.05);
+}
+
+#photoFrame p{
+margin-top:10px;
+font-size:16px;
+}
+
+#photoReveal{
+display:none;
+margin-top:25px;
+}
+
+#photoReveal img{
+width:320px;
+max-width:90%;
+border-radius:20px;
+border:4px solid rgba(255,255,255,.3);
+box-shadow:0 15px 35px rgba(0,0,0,.4);
+animation:fadeOpen .8s ease;
+}
   
 </style>
 
@@ -664,6 +715,31 @@ Every single time.
 </p>
 
 </div>
+
+</div>
+
+<div id="photoSurprise">
+
+    <h2>🤍 Until this becomes real...</h2>
+
+    <p class="photoText">
+        We may not have a real photo together yet,
+        but that doesn't make what we have any less real.
+        <br><br>
+        So, for now, let this little picture hold our place
+        until the day we can finally take thousands of real ones together.
+        <br><br>
+        <b>Tap the frame below. 🌙❤️</b>
+    </p>
+
+    <div id="photoFrame" onclick="showPhoto()">
+        🖼️
+        <p>Tap to reveal our first picture.</p>
+    </div>
+
+    <div id="photoReveal">
+        <img src="Cielo.jpeg" alt="Our Picture">
+    </div>
 
 </div>
 
@@ -921,6 +997,14 @@ star.remove();
 },800);
 
 });
+
+function showPhoto(){
+
+    document.getElementById("photoFrame").style.display = "none";
+
+    document.getElementById("photoReveal").style.display = "block";
+
+}
 
 const keypad = document.getElementById("keypad");
 
