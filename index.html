@@ -404,6 +404,111 @@ box-shadow:0 0 10px rgba(255,182,217,.4);
 }
 }
 
+#keypad{
+display:grid;
+grid-template-columns:repeat(3,80px);
+gap:12px;
+justify-content:center;
+margin-top:20px;
+}
+
+#keypad button{
+width:75px;
+height:75px;
+border-radius:50%;
+font-size:28px;
+font-weight:bold;
+margin:auto;
+background:rgba(255,255,255,.12);
+border:1px solid rgba(255,255,255,.25);
+color:white;
+backdrop-filter:blur(10px);
+transition:.2s;
+}
+
+#keypad button:hover{
+transform:scale(.95);
+background:rgba(255,255,255,.2);
+}
+
+@keyframes fadeOpen{
+
+from{
+opacity:0;
+transform:translateY(40px) scale(.9);
+}
+
+to{
+opacity:1;
+transform:translateY(0) scale(1);
+}
+
+}
+
+#envelope{
+font-size:120px;
+cursor:pointer;
+transition:.4s;
+display:inline-block;
+}
+
+#letterReveal{
+display:none;
+max-width:600px;
+margin:auto;
+padding:30px;
+background:rgba(255,255,255,.12);
+border-radius:25px;
+border:1px solid rgba(255,255,255,.2);
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+}
+#envelope{
+font-size:120px;
+cursor:pointer;
+display:inline-block;
+transition:.4s;
+animation:floatEnvelope 2.5s ease-in-out infinite;
+}
+
+@keyframes floatEnvelope{
+
+0%,100%{
+transform:translateY(0);
+}
+
+50%{
+transform:translateY(-10px);
+}
+
+}
+
+#passwordScreen{
+position:fixed;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+background:linear-gradient(
+rgba(8,7,20,.65),
+rgba(8,7,20,.9)
+);
+z-index:5;
+transition:opacity .6s ease;
+}
+
+#error{
+margin-top:18px;
+font-size:16px;
+color:#ffdbe9;
+line-height:1.5;
+min-height:45px;
+}
+
+#envelope p{
+margin-top:12px;
+font-size:18px;
+}
+  
 </style>
 
 </head>
@@ -417,37 +522,33 @@ box-shadow:0 0 10px rgba(255,182,217,.4);
 
 <div id="passwordScreen">
 
-<div class="card">
+<div class="card" id="firstQuestion">
 
-<h1>
-For My Dearest,
-<br>
-Cielo ❤️
-</h1>
+<h1>Are you Cielo? 🤍</h1>
 
-<p>
-Only one person can unlock this little piece of my heart 🌙
-</p>
+<p>This little universe belongs to only one person.</p>
 
+<button onclick="showKeypad()">Yes, it's me 💖</button>
 
-<input 
-id="password"
-type="password"
-placeholder="Enter our password">
+<button onclick="notCielo()">No 🌙</button>
 
+</div>
 
-<button onclick="unlock()">
-Unlock My Heart 💖
-</button>
+<div class="card" id="keypadScreen" style="display:none;">
 
+<h1>What's the code, pretty? 🤍</h1>
+
+<div id="display" style="font-size:32px;letter-spacing:10px;margin:20px 0;">○ ○ ○ ○</div>
+
+<input id="password" type="hidden">
+
+<div id="keypad"></div>
 
 <div id="error"></div>
 
-
 </div>
 
 </div>
-
 
 
 <div id="website">
@@ -507,18 +608,31 @@ Happy monthsary, hon! I love you so much!!!😚❤️
 
 </div> <!-- closes .hero -->
 
-<div id="surprise">
-    <h2>✨ One last thing...</h2>
+<div id="surprise" style="text-align:center;">
 
-    <p>
-        No matter how many months, years, or lifetimes pass...
-        <br><br>
-        I'd still choose you.
-        <br><br>
-        Every single time.
-        <br><br>
-        ❤️
-    </p>
+<div id="envelope" onclick="openLetter()">
+💌
+<p style="font-size:18px;margin-top:10px;">
+Click to open your last surprise 🤍
+</p>
+</div>
+
+<div id="letterReveal" style="display:none;">
+
+<h2>✨ One last thing...</h2>
+
+<p>
+No matter how many months, years, or lifetimes pass...
+<br><br>
+I'd still choose you.
+<br><br>
+Every single time.
+<br><br>
+❤️
+</p>
+
+</div>
+
 </div>
 
 </div> <!-- closes #website -->
@@ -526,25 +640,100 @@ Happy monthsary, hon! I love you so much!!!😚❤️
 
 <script>
 
-function unlock(){
+let attempts = 0;
 
-let password=document.getElementById("password").value.trim();
+const wrongMessages = [
+    "🤍 That's not it, hon.",
+    "🌙 Almost, hon... try again.",
+    "✨ You're close, hon... but that's not our code.",
+    "🥺 My heart is still locked, hon.",
+    "🌸 One more try, hon. I know you'll remember.",
+    "❤️ Nope, hon. That's not the one.",
+    "🌙 Our stars don't recognize that code, hon.",
+    "🤍 Try again, hon. I'm waiting for you.",
+    "💌 This heart only opens with our special code, hon.",
+    "😤 Hon... seriously? That's not the code.",
+    "😂 Hon! You're bullying my website already.",
+    "😩 I spent hours making this, hon... and that's the code you chose? 😭",
+    "💢 Wrong again, hon! I'm not opening that easily.",
+    "🤭 You're lucky I love you, hon. Try again.",
+    "😤 At this rate, we'll be celebrating our second monthsary before you get it right."
+];
 
+function openLetter(){
 
-if(password==="0611"){
+const envelope = document.getElementById("envelope");
+const letter = document.getElementById("letterReveal");
 
-document.getElementById("passwordScreen").style.display="none";
+envelope.style.transform = "scale(.8) rotateX(90deg)";
+envelope.style.opacity = "0";
 
-document.getElementById("website").style.display="block";
+setTimeout(() => {
+    envelope.style.display = "none";
+    letter.style.display = "block";
+    letter.style.animation = "fadeOpen .8s ease";
+},400);
+
+}
+  
+function showKeypad(){
+
+document.getElementById("firstQuestion").style.display="none";
+
+const keypad=document.getElementById("keypadScreen");
+
+keypad.style.display="block";
+keypad.style.animation="fadeOpen .8s ease";
 
 }
 
-else{
+function notCielo(){
 
-document.getElementById("error").innerHTML=
-"Wrong password 🥺";
+alert("Then this isn't for you. 🤍");
 
 }
+
+function unlock() {
+
+    let password = document.getElementById("password").value.trim();
+
+    if (password === "0611") {
+
+        document.getElementById("passwordScreen").style.opacity = "0";
+
+setTimeout(() => {
+    document.getElementById("passwordScreen").style.display = "none";
+
+    const website = document.getElementById("website");
+    website.style.display = "block";
+    website.style.animation = "fadeOpen 1s ease";
+},600);
+
+      const song = document.getElementById("song");
+
+song.play().catch(()=>{});
+
+document.getElementById("musicBtn").innerHTML="⏸ Pause our song";
+document.getElementById("musicBtn").classList.add("playing");
+
+    } else {
+
+        attempts++;
+
+        let message = wrongMessages[Math.floor(Math.random() * wrongMessages.length)];
+
+        if (attempts === 5) {
+            message = "🥺 Hon... did you forget our little secret already?";
+        }
+
+        if (attempts === 10) {
+            message = "💖 Fineee, hon. Here's a tiny hint...<br><br><b>06 _ _</b>";
+        }
+
+        document.getElementById("error").innerHTML = message;
+        document.getElementById("password").value = "";
+        document.getElementById("display").innerHTML = "○ ○ ○ ○";
+    }
 
 }
 
@@ -634,7 +823,12 @@ setTimeout(() => {
 
 }, 1200);
 
-document.addEventListener("click", function(e){
+let lastTrail = 0;
+
+document.addEventListener("mousemove", function(e){
+
+if(Date.now() - lastTrail < 40) return;
+lastTrail = Date.now();
 
 const heart = document.createElement("div");
 
@@ -692,6 +886,47 @@ star.style.transform="translateY(-30px)";
 setTimeout(()=>{
 star.remove();
 },800);
+
+});
+
+const keypad = document.getElementById("keypad");
+
+const buttons = [
+"1","2","3",
+"4","5","6",
+"7","8","9",
+"⌫","0"
+];
+
+buttons.forEach(value=>{
+
+const btn=document.createElement("button");
+btn.innerHTML=value;
+
+btn.onclick=function(){
+
+let pass=document.getElementById("password");
+
+if(value==="⌫"){
+
+pass.value=pass.value.slice(0,-1);
+
+}else if(pass.value.length<4){
+
+pass.value+=value;
+
+}
+
+document.getElementById("display").innerHTML=
+pass.value.padEnd(4,"○").split("").join(" ");
+
+if(pass.value.length===4){
+setTimeout(unlock,200);
+}
+
+};
+
+keypad.appendChild(btn);
 
 });
 </script>
