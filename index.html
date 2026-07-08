@@ -783,17 +783,9 @@ I have one more little surprise waiting for you.
 
 <p class="photoText">
 
-We may not have a real picture together yet.
-
-So for now...
-
-I asked a little bit of AI to help me imagine us.
-
-Not because I want edited memories...
-
-But because I can't wait for the real ones.
-
-One day, we'll replace every edited picture with real memories.
+🤍 Until this becomes real...
+We don't have a real picture together yet, so let this little one hold our place.
+One day, we'll replace it with countless memories of our own. ❤️
 
 <br><br>
 
@@ -831,13 +823,31 @@ Then tap below.
 
 <div id="surprise" style="display:none;text-align:center;">
 
-<div id="envelope" onclick="openLetter()">
+    <div id="envelope" onclick="openLetter()">
+        💌
+        <p>Your final surprise awaits...</p>
+    </div>
 
-💌
+    <div id="letterReveal" style="display:none;">
 
-<p>
-Your final surprise awaits...
-</p>
+        <h2>✨ One last thing...</h2>
+
+        <p>
+        No matter how many months,<br>
+        years,<br>
+        or lifetimes pass...
+        <br><br>
+
+        I'd still choose you.
+        <br><br>
+
+        Every single time.
+        <br><br>
+
+        ❤️
+        </p>
+
+    </div>
 
 </div>
   
@@ -921,7 +931,7 @@ document.getElementById("musicBtn").classList.add("playing");
         let message = wrongMessages[Math.floor(Math.random() * wrongMessages.length)];
 
         if (attempts === 5) {
-            message = "🥺 Hon... did you forget our little secret already?";
+            message = "🥺 Hon... di mo na ba ako mahal?";
         }
 
         if (attempts === 10) {
